@@ -1,0 +1,72 @@
+{% extends 'common.html' %}
+
+{% block content %}
+
+{% load static %}
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+-->
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <title>Profile</title>
+
+    <!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Google fonts -->
+    <link href="//fonts.googleapis.com/css?family=Nunito:400,700&display=swap" rel="stylesheet">
+
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %} " type="text/css" media="all" />
+
+</head>
+
+<body>
+    <div class="login-page">
+        <div class="form">
+          <form method="POST" class="register-form">
+            {% csrf_token %} 
+            {% if a %} 
+            <input type="text" name="name" value={{data.name}} required="" readonly>
+            <input type="email" name="email" value={{data.email}} required="" readonly>
+            <input type="number" name="phone" value={{data.phone}} required="" readonly>
+			<input type="text" name="message" placeholder="Enter message" required="">
+			{% else %}
+			<input type="text" name="name" placeholder="Enter Name" required="">
+            <input type="email" name="email" placeholder="Enter Email" required="">
+            <input type="number" name="phone" placeholder="Enter Phone Number" required="">
+			<input type="text" name="message" placeholder="Enter message" required="">
+            {% endif %}
+            <button >Contact Us</button>
+          </form>
+          <form method="POST" class="login-form">
+            {% csrf_token %} 
+            {% if a %} 
+			<input type="text" name="name" value={{data.name}} required="">
+            <input type="email" name="email" value={{data.email}} required="">
+            <input type="number" name="phone" value={{data.phone}} required="">
+			<input type="text" name="message" placeholder="Enter message" required="">
+			{% else %}
+			<input type="text" name="name" placeholder="Enter Name" required="">
+            <input type="email" name="email" placeholder="Enter Email" required="">
+            <input type="number" name="phone" placeholder="Enter Phone Number" required="">
+			<input type="text" name="message" placeholder="Enter message" required="">
+            {% endif %}
+              <button type="submit">Contact Us</button>
+            </form>
+        </div>
+        {% if message %}<script>alert("{{message}}")</script>{% endif %}
+      </div>
+    <!-- fontawesome v5-->
+    <script src="{% static 'js/fontawesome.js' %} "></script>
+
+</body>
+
+</html>
+
+{% endblock %}

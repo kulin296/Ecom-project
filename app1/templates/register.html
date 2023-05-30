@@ -1,0 +1,51 @@
+{% extends 'common.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title> Register form </title>
+
+    <!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Google fonts -->
+    <link href="//fonts.googleapis.com/css?family=Nunito:400,700&display=swap" rel="stylesheet">
+
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %} " type="text/css" media="all" />
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="login-page">
+  <div class="form">
+    <form method="POST" class="register-form">
+      {% csrf_token %} 
+      <input type="text" name="name" placeholder="username" required="">
+      <input type="text" name="address" placeholder="address" required="">
+      <input type="email" name="email" placeholder="email" required="">
+      <input type="number" name="phone" placeholder="phone" required="">
+      <input type="password" name="password" placeholder="password" required="">
+      <button >Sign Up</button>
+    </form>
+    <form method="POST" class="login-form">
+        {% csrf_token %} 
+        <input type="text" name="name" placeholder="username" required="">
+        <input type="text" name="address" placeholder="address" required="">
+        <input type="email" name="email" placeholder="email" required="">
+        <input type="number" name="phone" placeholder="phone" required="">
+        <input type="password" name="password" placeholder="password" required="">
+        <button type="submit">Sign Up</button>
+      </form>
+  </div>
+  {% if message %}<script>alert("{{message}}")</script>{% endif %}
+</div>
+<!-- partial -->
+  <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="{% static 'js/script.js' %}"></script>
+
+</body>
+</html>
+
+{% endblock %}
